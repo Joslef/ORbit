@@ -16,6 +16,12 @@
   <img src="https://img.shields.io/badge/license-MIT-blue?style=flat-square" alt="MIT License">
 </p>
 
+<p align="center">
+  <a href="https://github.com/Joslef/ORbit/releases/latest/download/ORbit.dmg">
+    <img src="https://img.shields.io/badge/⬇ Download-ORbit.dmg-black?style=for-the-badge" alt="Download ORbit">
+  </a>
+</p>
+
 <br>
 
 ## What is ORbit?
@@ -38,6 +44,15 @@ ORbit is a lightweight macOS menu bar app that shows your [OpenRouter](https://o
 ---
 
 ## Installation
+
+### Download (recommended)
+
+1. [**Download ORbit.dmg**](https://github.com/Joslef/ORbit/releases/latest/download/ORbit.dmg)
+2. Open the `.dmg` and drag **ORbit** into your **Applications** folder
+3. Launch ORbit from Applications or Spotlight
+4. ORbit will appear in your menu bar
+
+> **First launch:** macOS may warn about an unidentified developer. Right-click the app → **Open** → **Open** to proceed.
 
 ### Build from source
 
