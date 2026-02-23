@@ -7,6 +7,10 @@
 <h4 align="center">OpenRouter credit balance, always one glance away — right in your macOS menu bar.</h4>
 
 <p align="center">
+  <img src="screenshot.png" alt="ORbit menu bar app showing balance, credits and usage" width="280">
+</p>
+
+<p align="center">
   <img src="https://img.shields.io/badge/macOS-14%2B-black?style=flat-square&logo=apple" alt="macOS 14+">
   <img src="https://img.shields.io/badge/Swift-5.0-orange?style=flat-square&logo=swift" alt="Swift 5.0">
   <img src="https://img.shields.io/badge/license-MIT-blue?style=flat-square" alt="MIT License">
