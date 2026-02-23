@@ -111,18 +111,11 @@ private struct MenuRowLabel: View {
 private struct CreditCardView: View {
     @ObservedObject var viewModel: CreditsViewModel
 
-    private var usageRatio: Double {
-        guard let credits = viewModel.totalCredits, credits > 0,
-              let usage = viewModel.totalUsage else { return 0 }
-        return min(usage / credits, 1.0)
-    }
-
     private var accentColor: Color {
-        switch usageRatio {
-        case ..<0.5: return .green
-        case ..<0.8: return .orange
-        default: return .red
-        }
+        guard let balance = viewModel.balance else { return .green }
+        if balance > 10 { return .green }
+        if balance > 2  { return .orange }
+        return .red
     }
 
     var body: some View {
