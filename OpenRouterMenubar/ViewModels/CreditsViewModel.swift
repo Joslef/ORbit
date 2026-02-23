@@ -26,13 +26,13 @@ final class CreditsViewModel: ObservableObject {
     }()
 
     var menuBarTitle: String {
-        if !hasAPIKey { return "OR: --" }
-        if isLoading && balance == nil { return "OR: ..." }
+        if !hasAPIKey { return "ORb: --" }
+        if isLoading && balance == nil { return "ORb: ..." }
         if let balance {
-            return Self.formatter.string(from: NSNumber(value: balance)) ?? "OR: ?"
+            return Self.formatter.string(from: NSNumber(value: balance)) ?? "ORb: ?"
         }
-        if errorMessage != nil { return "OR: ?" }
-        return "OR: --"
+        if errorMessage != nil { return "ORb: ?" }
+        return "ORb: --"
     }
 
     init() {
