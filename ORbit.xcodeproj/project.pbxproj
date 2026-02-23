@@ -18,7 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		A2000000000000000000000A /* OpenRouterMenubar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenRouterMenubar.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A2000000000000000000000A /* ORbit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ORbit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A20000010000000000000001 /* ORbitApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ORbitApp.swift; sourceTree = "<group>"; };
 		A20000020000000000000002 /* CreditsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsResponse.swift; sourceTree = "<group>"; };
 		A20000030000000000000003 /* KeychainHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainHelper.swift; sourceTree = "<group>"; };
@@ -27,7 +27,7 @@
 		A20000060000000000000006 /* MenuBarContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuBarContentView.swift; sourceTree = "<group>"; };
 		A20000070000000000000007 /* APIKeyInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeyInputView.swift; sourceTree = "<group>"; };
 		A20000080000000000000008 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A20000090000000000000009 /* OpenRouterMenubar.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OpenRouterMenubar.entitlements; sourceTree = "<group>"; };
+		A20000090000000000000009 /* ORbit.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ORbit.entitlements; sourceTree = "<group>"; };
 		A200000B000000000000000B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -56,12 +56,12 @@
 		A40000010000000000000001 = {
 			isa = PBXGroup;
 			children = (
-				A40000020000000000000002 /* OpenRouterMenubar */,
+				A40000020000000000000002 /* ORbit */,
 				A40000060000000000000006 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		A40000020000000000000002 /* OpenRouterMenubar */ = {
+		A40000020000000000000002 /* ORbit */ = {
 			isa = PBXGroup;
 			children = (
 				A20000010000000000000001 /* ORbitApp.swift */,
@@ -71,9 +71,9 @@
 				A40000070000000000000007 /* Views */,
 				A200000B000000000000000B /* Assets.xcassets */,
 				A20000080000000000000008 /* Info.plist */,
-				A20000090000000000000009 /* OpenRouterMenubar.entitlements */,
+				A20000090000000000000009 /* ORbit.entitlements */,
 			);
-			path = OpenRouterMenubar;
+			path = ORbit;
 			sourceTree = "<group>";
 		};
 		A40000030000000000000003 /* Models */ = {
@@ -104,7 +104,7 @@
 		A40000060000000000000006 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A2000000000000000000000A /* OpenRouterMenubar.app */,
+				A2000000000000000000000A /* ORbit.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -121,9 +121,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		A50000010000000000000001 /* OpenRouterMenubar */ = {
+		A50000010000000000000001 /* ORbit */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A70000010000000000000001 /* Build configuration list for PBXNativeTarget "OpenRouterMenubar" */;
+			buildConfigurationList = A70000010000000000000001 /* Build configuration list for PBXNativeTarget "ORbit" */;
 			buildPhases = (
 				A30000020000000000000002 /* Resources */,
 				A60000010000000000000001 /* Sources */,
@@ -133,9 +133,9 @@
 			);
 			dependencies = (
 			);
-			name = OpenRouterMenubar;
-			productName = OpenRouterMenubar;
-			productReference = A2000000000000000000000A /* OpenRouterMenubar.app */;
+			name = ORbit;
+			productName = ORbit;
+			productReference = A2000000000000000000000A /* ORbit.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -153,7 +153,7 @@
 					};
 				};
 			};
-			buildConfigurationList = A70000020000000000000002 /* Build configuration list for PBXProject "OpenRouterMenubar" */;
+			buildConfigurationList = A70000020000000000000002 /* Build configuration list for PBXProject "ORbit" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -166,7 +166,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A50000010000000000000001 /* OpenRouterMenubar */,
+				A50000010000000000000001 /* ORbit */,
 			);
 		};
 /* End PBXProject section */
@@ -293,14 +293,14 @@
 		A90000030000000000000003 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = OpenRouterMenubar/OpenRouterMenubar.entitlements;
+				CODE_SIGN_ENTITLEMENTS = ORbit/ORbit.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 2RWUK6YN75;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = OpenRouterMenubar/Info.plist;
+				INFOPLIST_FILE = ORbit/Info.plist;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_KEY_CFBundleDisplayName = ORbit;
 				INFOPLIST_KEY_LSUIElement = YES;
@@ -320,14 +320,14 @@
 		A90000040000000000000004 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = OpenRouterMenubar/OpenRouterMenubar.entitlements;
+				CODE_SIGN_ENTITLEMENTS = ORbit/ORbit.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 2RWUK6YN75;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = OpenRouterMenubar/Info.plist;
+				INFOPLIST_FILE = ORbit/Info.plist;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_KEY_CFBundleDisplayName = ORbit;
 				INFOPLIST_KEY_LSUIElement = YES;
@@ -347,7 +347,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		A70000010000000000000001 /* Build configuration list for PBXNativeTarget "OpenRouterMenubar" */ = {
+		A70000010000000000000001 /* Build configuration list for PBXNativeTarget "ORbit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A90000030000000000000003 /* Debug */,
@@ -356,7 +356,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A70000020000000000000002 /* Build configuration list for PBXProject "OpenRouterMenubar" */ = {
+		A70000020000000000000002 /* Build configuration list for PBXProject "ORbit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A90000010000000000000001 /* Debug */,

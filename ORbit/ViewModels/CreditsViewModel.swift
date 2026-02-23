@@ -7,6 +7,7 @@ final class CreditsViewModel: ObservableObject {
     @Published var balance: Double?
     @Published var totalCredits: Double?
     @Published var totalUsage: Double?
+    @Published var keyData: KeyData?
     @Published var isLoading = false
     @Published var errorMessage: String?
     @Published var hasAPIKey = false
@@ -52,15 +53,24 @@ final class CreditsViewModel: ObservableObject {
         isLoading = true
         errorMessage = nil
 
+        async let creditsResult = ORbitAPI.fetchCredits(apiKey: apiKey)
+        async let keyResult     = ORbitAPI.fetchKey(apiKey: apiKey)
+
         do {
-            let data = try await ORbitAPI.fetchCredits(apiKey: apiKey)
-            balance = data.balance
-            totalCredits = data.totalCredits
-            totalUsage = data.totalUsage
+            let credits = try await creditsResult
+            balance      = credits.balance
+            totalCredits = credits.totalCredits
+            totalUsage   = credits.totalUsage
         } catch let error as APIError {
             errorMessage = error.localizedDescription
         } catch {
             errorMessage = "Failed to fetch credits"
+        }
+
+        do {
+            keyData = try await keyResult
+        } catch {
+            keyData = nil
         }
 
         isLoading = false
@@ -92,11 +102,12 @@ final class CreditsViewModel: ObservableObject {
         KeychainHelper.delete()
         timerCancellable = nil
         hasAPIKey = false
-        balance = nil
+        balance      = nil
         totalCredits = nil
-        totalUsage = nil
+        totalUsage   = nil
+        keyData      = nil
         errorMessage = nil
-        apiKeyInput = ""
+        apiKeyInput  = ""
     }
 
     private func startTimer() {

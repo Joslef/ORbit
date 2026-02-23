@@ -10,6 +10,7 @@ struct ORbitApp: App {
         } label: {
             Text(viewModel.menuBarTitle)
         }
+        .menuBarExtraStyle(.window)
 
         Settings {
             APIKeyInputView(viewModel: viewModel)

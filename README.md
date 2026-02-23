@@ -1,14 +1,12 @@
 <h1 align="center">
   <br>
+  <img src="icon.png" alt="ORbit" width="128">
+  <br>
   ORbit
   <br>
 </h1>
 
 <h4 align="center">OpenRouter credit balance, always one glance away — right in your macOS menu bar.</h4>
-
-<p align="center">
-  <img src="screenshot.png" alt="ORbit menu bar app showing balance, credits and usage" width="280">
-</p>
 
 <p align="center">
   <img src="https://img.shields.io/badge/macOS-14%2B-black?style=flat-square&logo=apple" alt="macOS 14+">
@@ -54,27 +52,7 @@ ORbit is a lightweight macOS menu bar app that shows your [OpenRouter](https://o
 
 > **First launch:** macOS may warn about an unidentified developer. Right-click the app → **Open** → **Open** to proceed.
 
-### Build from source
-
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/Joslef/ORbit.git
-   cd ORbit
-   ```
-
-2. **Open in Xcode**
-   ```bash
-   open OpenRouterMenubar.xcodeproj
-   ```
-
-3. **Set your development team**
-   - In Xcode, select the `OpenRouterMenubar` target
-   - Go to **Signing & Capabilities**
-   - Select your Apple Developer account under **Team**
-
-4. **Build and run**
-   - Press `⌘ + R` or click **Product → Run**
-   - ORbit will appear in your menu bar
+> **Allow in Security settings:** Go to **System Settings → Privacy & Security** and click **Open Anyway** next to the ORbit entry to allow it to run.
 
 ---
 
@@ -89,7 +67,7 @@ ORbit is a lightweight macOS menu bar app that shows your [OpenRouter](https://o
 ### Add your key to ORbit
 
 1. Click the ORbit icon in your menu bar
-2. Select **API Key Settings...** (or press `, `)
+2. Select **Settings...** (or press `⌘,`)
 3. Paste your API key and press **Return** or click **Save Key**
 4. Your balance appears instantly in the menu bar
 
@@ -102,9 +80,9 @@ ORbit is a lightweight macOS menu bar app that shows your [OpenRouter](https://o
 | Display | Meaning |
 |---------|---------|
 | `$2.50` | Your current credit balance |
-| `OR: ...` | Loading balance |
-| `OR: ?` | Error fetching balance (check your key) |
-| `OR: --` | No API key configured |
+| `ORb: ...` | Loading balance |
+| `ORb: ?` | Error fetching balance (check your key) |
+| `ORb: --` | No API key configured |
 
 ---
 

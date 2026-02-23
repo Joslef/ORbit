@@ -3,6 +3,7 @@ import AppKit
 
 struct APIKeyInputView: View {
     @ObservedObject var viewModel: CreditsViewModel
+    @Environment(\.dismiss) private var dismiss
 
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
@@ -62,6 +63,7 @@ struct APIKeyInputView: View {
         .frame(width: 380, height: 260)
         .navigationTitle("ORbit Settings")
         .background(WindowFloatingHelper())
+        .onExitCommand { dismiss() }
     }
 }
 
