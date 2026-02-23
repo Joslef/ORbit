@@ -42,7 +42,7 @@ struct MenuBarContentView: View {
             }
         }
         .padding(.vertical, 4)
-        .frame(width: 150)
+        .frame(width: 180)
         .background(.regularMaterial)
         .focusEffectDisabled()
     }
@@ -59,6 +59,7 @@ private struct SettingsMenuRow: View {
                 .background(isHovered ? Color.accentColor.opacity(0.15) : Color.clear)
                 .clipShape(RoundedRectangle(cornerRadius: 4))
         }
+        .keyboardShortcut(KeyEquivalent(shortcut.lowercased().first!), modifiers: .command)
         .buttonStyle(.plain)
         .focusEffectDisabled()
         .simultaneousGesture(TapGesture().onEnded {
@@ -80,6 +81,7 @@ private struct MenuRow: View {
                 .background(isHovered ? Color.accentColor.opacity(0.15) : Color.clear)
                 .clipShape(RoundedRectangle(cornerRadius: 4))
         }
+        .keyboardShortcut(KeyEquivalent(shortcut.lowercased().first!), modifiers: .command)
         .buttonStyle(.plain)
         .onHover { isHovered = $0 }
     }
@@ -105,6 +107,91 @@ private struct MenuRowLabel: View {
         .padding(.vertical, 3)
         .frame(maxWidth: .infinity)
         .contentShape(Rectangle())
+    }
+}
+
+private struct BudgetView: View {
+    let limit: Double
+    let remaining: Double
+    let reset: String?
+    let viewModel: CreditsViewModel
+
+    private var used: Double     { limit - remaining }
+    private var fraction: Double { limit > 0 ? min(used / limit, 1.0) : 0 }
+
+    private var barColor: Color {
+        if fraction < 0.7 { return .green }
+        if fraction < 0.9 { return .orange }
+        return .red
+    }
+
+    private var nextResetDate: Date? {
+        guard let reset else { return nil }
+        var cal = Calendar(identifier: .gregorian)
+        cal.timeZone = TimeZone(identifier: "UTC")!
+        let now = Date()
+        switch reset {
+        case "daily":
+            return cal.nextDate(after: now, matching: DateComponents(hour: 0, minute: 0, second: 0), matchingPolicy: .nextTime)
+        case "weekly":
+            return cal.nextDate(after: now, matching: DateComponents(hour: 0, minute: 0, second: 0, weekday: 2), matchingPolicy: .nextTime)
+        case "monthly":
+            return cal.nextDate(after: now, matching: DateComponents(day: 1, hour: 0, minute: 0, second: 0), matchingPolicy: .nextTime)
+        default:
+            return nil
+        }
+    }
+
+    private var timeUntilReset: String? {
+        guard let target = nextResetDate else { return nil }
+        let seconds = Int(target.timeIntervalSinceNow)
+        guard seconds > 0 else { return nil }
+        let days    = seconds / 86400
+        let hours   = (seconds % 86400) / 3600
+        let minutes = (seconds % 3600) / 60
+        if days > 0    { return "in \(days)d \(hours)h" }
+        if hours > 0   { return "in \(hours)h \(minutes)m" }
+        return "in \(minutes)m"
+    }
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 5) {
+            Text("API Key")
+                .font(.caption)
+                .foregroundStyle(.secondary)
+            HStack {
+                Text("Limit")
+                    .foregroundStyle(.secondary)
+                Spacer()
+                Text(viewModel.formattedCurrency(remaining))
+                    .bold()
+                    .foregroundStyle(barColor)
+                Text("/ \(viewModel.formattedCurrency(limit))")
+                    .foregroundStyle(.secondary)
+                    .font(.caption)
+            }
+            GeometryReader { geo in
+                ZStack(alignment: .leading) {
+                    RoundedRectangle(cornerRadius: 2)
+                        .fill(Color.secondary.opacity(0.2))
+                    RoundedRectangle(cornerRadius: 2)
+                        .fill(barColor)
+                        .frame(width: geo.size.width * fraction)
+                }
+            }
+            .frame(height: 4)
+            if let reset {
+                HStack {
+                    Text("Resets \(reset)")
+                    Spacer()
+                    if let countdown = timeUntilReset {
+                        Text(countdown)
+                    }
+                }
+                .font(.caption2)
+                .foregroundStyle(.secondary)
+            }
+        }
     }
 }
 
@@ -167,11 +254,12 @@ private struct CreditCardView: View {
                     Text(viewModel.totalCredits.map { viewModel.formattedCurrency($0) } ?? "--")
                         .bold()
                 }
-                if let keyData = viewModel.keyData {
+                if let keyData = viewModel.keyData,
+                   let limit = keyData.limit,
+                   let remaining = keyData.limitRemaining {
                     Divider()
-                    usageRow("Today",  value: keyData.usageDaily)
-                    usageRow("Week",   value: keyData.usageWeekly)
-                    usageRow("Month",  value: keyData.usageMonthly)
+                    BudgetView(limit: limit, remaining: remaining,
+                               reset: keyData.limitReset, viewModel: viewModel)
                 }
             }
             .padding(.horizontal, 12)
@@ -185,13 +273,4 @@ private struct CreditCardView: View {
         )
     }
 
-    private func usageRow(_ label: String, value: Double?) -> some View {
-        HStack {
-            Text(label)
-                .foregroundStyle(.secondary)
-            Spacer()
-            Text(value.map { viewModel.formattedCurrency($0) } ?? "--")
-                .bold()
-        }
-    }
 }

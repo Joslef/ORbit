@@ -26,18 +26,16 @@ struct KeyData: Codable {
     let label: String
     let usage: Double
     let limit: Double?
+    let limitRemaining: Double?
+    let limitReset: String?
     let isFreeTier: Bool
-    let usageDaily: Double?
-    let usageWeekly: Double?
-    let usageMonthly: Double?
 
     enum CodingKeys: String, CodingKey {
         case label
         case usage
         case limit
-        case isFreeTier   = "is_free_tier"
-        case usageDaily   = "usage_daily"
-        case usageWeekly  = "usage_weekly"
-        case usageMonthly = "usage_monthly"
+        case limitRemaining = "limit_remaining"
+        case limitReset     = "limit_reset"
+        case isFreeTier     = "is_free_tier"
     }
 }

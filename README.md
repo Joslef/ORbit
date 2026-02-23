@@ -32,12 +32,16 @@ ORbit is a lightweight macOS menu bar app that shows your [OpenRouter](https://o
 - **Zero bloat** — no third-party dependencies, pure Swift + SwiftUI
 - **Sandboxed** — runs with minimal permissions (outbound network only)
 
+<p align="center">
+  <img src="screenshot.png" alt="ORbit screenshot" width="240">
+</p>
+
 ---
 
 ## Requirements
 
 - macOS 14 Sonoma or later
-- An [OpenRouter](https://openrouter.ai) account and API key
+- An OpenRouter account and API key
 
 ---
 

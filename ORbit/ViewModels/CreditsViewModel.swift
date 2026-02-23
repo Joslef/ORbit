@@ -26,6 +26,16 @@ final class CreditsViewModel: ObservableObject {
         return f
     }()
 
+    private static let preciseFormatter: NumberFormatter = {
+        let f = NumberFormatter()
+        f.numberStyle = .currency
+        f.currencyCode = "USD"
+        f.locale = Locale(identifier: "en_US")
+        f.minimumFractionDigits = 2
+        f.maximumFractionDigits = 4
+        return f
+    }()
+
     var menuBarTitle: String {
         if !hasAPIKey { return "ORb: --" }
         if isLoading && balance == nil { return "ORb: ..." }
@@ -119,7 +129,8 @@ final class CreditsViewModel: ObservableObject {
             }
     }
 
-    func formattedCurrency(_ value: Double) -> String {
-        Self.formatter.string(from: NSNumber(value: value)) ?? "$0.00"
+    func formattedCurrency(_ value: Double, precise: Bool = false) -> String {
+        let f = (precise || (value > 0 && value < 0.01)) ? Self.preciseFormatter : Self.formatter
+        return f.string(from: NSNumber(value: value)) ?? "$0.00"
     }
 }
